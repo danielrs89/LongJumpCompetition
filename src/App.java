@@ -8,14 +8,19 @@ public class App {
     // mayor a menor.
     // 4- Finalizar el programa.
 
-    private int maxParticipant = 10;
+    private static int maxParticipant = 10;
     private static int choice = 0;
 
     public static void main(String[] args) throws Exception {
-        do {
-            showMenu();
-            choice = InputManager.getNumberRangeSM("", 1, 4);
-        } while (choice != 4);
+        try {
+            do {
+                showMenu();
+                choice = InputManager.getNumberRangeSM("", 1, 4);
+                optionMenu(choice);    
+            } while (choice != 4);
+        } catch (Exception e) {
+            System.out.println("Error -> "+e.getMessage());
+        }
 
     }
 
@@ -29,13 +34,21 @@ public class App {
     public static void optionMenu(int choice) {
         switch (choice) {
             case 1:
-                registerParticipant();
+                if (maxParticipant != 0) {
+                    Process.registerParticipant();
+                    maxParticipant--;
+                    System.out.println("¡Dorsal registrado con éxito!");
+                }
+                // System.out.println("MAXPARTICIPANTES -> "+maxParticipant);
+                // for (Participant p : Process.participantList) {
+                //     System.out.println(p.toString());    
+                // }
                 break;
             case 2:
-                orderDorsal();
+                Process.orderDorsal();
                 break;
             case 3:
-                best2002();
+                // Process.best2002();
                 break;
             case 4:
                 InputManager.limpiarConsola();
@@ -47,18 +60,4 @@ public class App {
 
     }
 
-    private static void best2002() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'best2002'");
-    }
-
-    private static void orderDorsal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'orderDorsal'");
-    }
-
-    private static void registerParticipant() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'registerParticipant'");
-    }
 }

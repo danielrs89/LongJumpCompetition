@@ -1,7 +1,8 @@
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class InputManager {
-	
+
 	/*
 	 * Get an integer and validate
 	 */
@@ -21,6 +22,28 @@ public class InputManager {
 		} while (!valid);
 		return number;
 	}
+
+	/*
+	 * Get an double and validate
+	 */
+	public static double getDoubleNumber(String text) {
+		Scanner sc = new Scanner(System.in);
+		boolean valid = false;
+		double number = 0;
+		do {
+			try {
+				System.out.print("[>] Dime " + text + ": ");
+				number = sc.nextDouble();
+				number = Math.round(number * 100.0) / 100.0;
+				valid = true;
+			} catch (Exception e) {
+				System.out.println("[!] Tipo de dato incorrecto");
+				sc.next();
+			}
+		} while (!valid);
+		return number;
+	}
+
 	/*
 	 * Get an integer validate with condition
 	 */
@@ -36,8 +59,8 @@ public class InputManager {
 				if (number <= nCondition) {
 					valid = false;
 					System.out.println("[!] El numero introducido tiene que ser mayor que " + nCondition);
-				}			
-				
+				}
+
 			} catch (Exception e) {
 				System.out.println("[!] Tipo de dato incorrecto");
 				sc.next();
@@ -45,6 +68,7 @@ public class InputManager {
 		} while (!valid);
 		return number;
 	}
+
 	/*
 	 * Get an integer validate in a range
 	 */
@@ -59,31 +83,8 @@ public class InputManager {
 				valid = true;
 				if (number < nLower || number > nMax) {
 					valid = false;
-					System.out.println("[!] El numero introducido tiene que ser mayor o igual que " + nLower + " y menor o igual que " + nMax);
-				}			
-				
-			} catch (Exception e) {
-				System.out.println("[!] Tipo de dato incorrecto");
-				sc.nextLine();
-			}
-		} while (!valid);
-		return number;
-	}
-	/*
-	 * Get an integer validate in a range
-	 */
-	public static int getNumberRangeSM(String text, int nLower, int nMax) {
-		Scanner sc = new Scanner(System.in);
-		boolean valid = false;
-		int number = 0;
-		do {
-			try {
-				System.out.print("[>] " + text );
-				number = sc.nextInt();
-				valid = true;
-				if (number < nLower || number > nMax) {
-					valid = false;
-					System.out.println("[!] El numero introducido tiene que ser mayor o igual que " + nLower + " y menor o igual que " + nMax);
+					System.out.println("[!] El numero introducido tiene que ser mayor o igual que " + nLower
+							+ " y menor o igual que " + nMax);
 				}
 
 			} catch (Exception e) {
@@ -93,11 +94,37 @@ public class InputManager {
 		} while (!valid);
 		return number;
 	}
-	
+
+	/*
+	 * Get an integer validate in a range
+	 */
+	public static int getNumberRangeSM(String text, int nLower, int nMax) {
+		Scanner sc = new Scanner(System.in);
+		boolean valid = false;
+		int number = 0;
+		do {
+			try {
+				System.out.print("[>] " + text);
+				number = sc.nextInt();
+				valid = true;
+				if (number < nLower || number > nMax) {
+					valid = false;
+					System.out.println("[!] El numero introducido tiene que ser mayor o igual que " + nLower
+							+ " y menor o igual que " + nMax);
+				}
+
+			} catch (Exception e) {
+				System.out.println("[!] Tipo de dato incorrecto");
+				sc.nextLine();
+			}
+		} while (!valid);
+		return number;
+	}
+
 	/*
 	 * Get a String and validate
 	 */
-	
+
 	public static String getString(String text) {
 		Scanner sc = new Scanner(System.in);
 		boolean valid = false;
@@ -114,6 +141,7 @@ public class InputManager {
 		} while (!valid);
 		return word;
 	}
+
 	/*
 	 * Get a String Not Empty and validate
 	 */
@@ -121,7 +149,7 @@ public class InputManager {
 		Scanner sc = new Scanner(System.in);
 		boolean valid = false;
 		String word = "";
-		
+
 		do {
 			try {
 				System.out.print("[>] Dime " + text + ": ");
@@ -131,7 +159,7 @@ public class InputManager {
 					valid = false;
 					System.out.println("[!] No puede estar vacio");
 				}
-				
+
 			} catch (Exception e) {
 				System.out.println("[!] Tipo de dato incorrecto");
 				sc.next();
@@ -139,6 +167,7 @@ public class InputManager {
 		} while (!valid);
 		return word;
 	}
+
 	/*
 	 * Get a String Not Empty, only characters and validate
 	 */
@@ -146,14 +175,15 @@ public class InputManager {
 		Scanner sc = new Scanner(System.in);
 		boolean valid = false;
 		String word = "";
-		
+
 		do {
 			try {
 				System.out.print("[>] Dime " + text + ": ");
 				word = sc.nextLine();
-				System.out.print(!word.isEmpty() && word.matches("[\\w\\s]+") ? "": "[!] No puede estar vacio ni contener simbolos\n" );
+				System.out.print(!word.isEmpty() && word.matches("[\\w\\s]+") ? ""
+						: "[!] No puede estar vacio ni contener simbolos\n");
 				valid = !word.isEmpty() && word.matches("[\\w\\s]+");
-				
+
 			} catch (Exception e) {
 				System.out.println("[!] Tipo de dato incorrecto");
 				sc.next();
@@ -164,21 +194,36 @@ public class InputManager {
 	/*
 	 * Press ENTER
 	 */
-	
+
 	public static void pressEnter() {
 		String msg = " Presiona [ENTER] para continuar... ";
 		System.out.println("=".repeat(msg.length()));
 		System.out.println(msg);
 		System.out.println("=".repeat(msg.length()));
-        Scanner sc = new Scanner(System.in);
-	    sc.nextLine();
+		Scanner sc = new Scanner(System.in);
+		sc.nextLine();
 	}
+
 	/*
 	 * Clean console with System.out.println
 	 */
 	public static void limpiarConsola() {
-		for (int i = 0; i < 50; ++i) System.out.println(); 
+		for (int i = 0; i < 50; ++i)
+			System.out.println();
 	}
-	
-	
+
+	/*
+	 * Create number aleatory
+	 */
+	public static int aleatoryNumber(int max) {
+		SecureRandom secureRandom = new SecureRandom();
+		int aleatory = 0;
+		try {
+			aleatory = secureRandom.nextInt(max);
+		} catch (Exception e) {
+			System.out.println("Error -> " + e.getMessage());
+		}
+		return aleatory;
+	}
+
 }
