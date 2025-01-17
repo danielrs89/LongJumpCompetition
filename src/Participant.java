@@ -1,6 +1,6 @@
 public class Participant {
     private String Name;
-    private int dorsalNumber = 0;
+    private int dorsalNumber=0;
     private double bestRecord2000, bestRecord2001, bestRecord2002;
 
     public Participant() {

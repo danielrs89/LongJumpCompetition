@@ -1,4 +1,4 @@
-import java.security.SecureRandom;
+import java.util.Random;
 import java.util.Scanner;
 
 public class InputManager {
@@ -215,11 +215,11 @@ public class InputManager {
 	/*
 	 * Create number aleatory
 	 */
-	public static int aleatoryNumber(int max) {
-		SecureRandom secureRandom = new SecureRandom();
+	public static int aleatoryNumber(int min, int max) {
+		Random random = new Random();
 		int aleatory = 0;
 		try {
-			aleatory = secureRandom.nextInt(max);
+			aleatory = random.nextInt(max)+min;
 		} catch (Exception e) {
 			System.out.println("Error -> " + e.getMessage());
 		}

@@ -12,6 +12,7 @@ public class App {
     private static int choice = 0;
 
     public static void main(String[] args) throws Exception {
+        
         try {
             do {
                 showMenu();
@@ -39,7 +40,7 @@ public class App {
                     maxParticipant--;
                     System.out.println("¡Dorsal registrado con éxito!");
                 }
-                // System.out.println("MAXPARTICIPANTES -> "+maxParticipant);
+                // System.out.println("MAXIMOS PARTICIPANTES -> "+maxParticipant);
                 // for (Participant p : Process.participantList) {
                 //     System.out.println(p.toString());    
                 // }
